@@ -7,8 +7,8 @@
 ####
 
 team_name = 'Tacos' # Only 10 chars displayed.
-strategy_name = 'Tortilla wrap'
-strategy_description = 'alwalys collude'# will look into this later
+strategy_name = 'Copier'
+strategy_description = 'Does the inverse of the competitor'# will look into this later
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -17,7 +17,7 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    OPTIONS=['c','b']
+    OPTIONS='cb'
     undecided=false#set to true if don't know what to do
     
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
@@ -27,10 +27,7 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    if undecided:
-        return random.choice(['c','b'])
-    return 'c'
-
+    return their_history[:-1]
     
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
