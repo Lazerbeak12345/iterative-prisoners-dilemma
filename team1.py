@@ -7,22 +7,16 @@
 ####
 
 team_name = 'Tacos' # Only 10 chars displayed.
-strategy_name = 'Tortilla wrap'
-strategy_description = 'Collude, then alternate.'# will look into this later
+strategy_name = 'Smart taco'
+strategy_description = 'Return b unluess winning, if winning return what competitor returned.'
     
 def move(my_history, their_history, my_score, their_score):
-    ''' make my move based on the history of the player 
+    ''' Arguments accepted: my_history, their_history are strings.
+    my_score, their_score are ints.
     
- +    history: a string with one letter (c or b) per round that has been played with this opponent.
- +    their_history: a string of the same length as history, possibly empty. 
- +    The first round between these two players is my_history[0] and their_history[0]
- +    The most recent round is my_history[-1] and their_history[-1]
- +    
- +    Returns 'c' or 'b' for collude or betray. 
+    Make my move.
+    Returns 'c' or 'b'. 
     '''
-    OPTIONS=['c','b']
-    undecided=False#set to true if don't know what to do
-    
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -30,10 +24,10 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    if len(my_history)%2 == 0:
-        return 'c'
-    else:
+    if (my_score>=their_score):
         return 'b'
+    else:
+        return their_history[-1]
     
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
